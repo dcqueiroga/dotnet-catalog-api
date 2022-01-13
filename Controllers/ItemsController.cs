@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Catalog.Entities;
 using Catalog.Repositories;
@@ -9,18 +10,33 @@ namespace Catalog.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase 
     {
-        private readonly InMemItemsRepository repository;
-            
-        public ItemsController ()
+        private readonly IItemsRepository repository;
+        
+        public ItemsController(IItemsRepository repository)
         {
-            repository = new InMemItemsRepository();
+            this.repository = repository;
         }
 
+        // GET /items
         [HttpGet]
         public IEnumerable<Item> GetItems()
         {
             var items = repository.GetItems();
             return items;
+        }
+
+        // GET /items/{id}
+        [HttpGet("{id}")]
+        public ActionResult<Item> GetItem(Guid id)
+        {
+            var item = repository.GetItem(id);
+            
+            if (item is null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(item);
         }
     } 
 }

@@ -1,3 +1,4 @@
+using Catalog.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,8 @@ namespace Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Register dependencies
+            services.AddSingleton<IItemsRepository, InMemItemsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
