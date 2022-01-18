@@ -1,6 +1,6 @@
 # dotnet-catalog-api
 
-This project provides a simple demonstration of how to create a Web API using DotNet 5.0.
+This project provides a simple demonstration of how to create a Web API using DotNet 5.0, Docker and MongoDB
 
 Useful hints:
 
@@ -18,3 +18,4 @@ Useful hints:
 
 - Save a password in the secret store: dotnet user-secrets set MongoDbConfiguration:Password password123
 
+- Add MongoDB's health check: dotnet add package AspNetCore.HealthChecks.MongoDb
