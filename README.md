@@ -11,3 +11,10 @@ Useful hints:
 - Add MongoDB package by Nuget: dotnet add package MongoDB.Driver
 
 - Install MongoDB using Docker: docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
+
+- Install MongoDB using Docker with credentials access enabled: docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db -e MONGO_INITDB_ROOT_USERNAME=useradmin -e MONGO_INITDB_ROOT_PASSWORD=password123
+
+- Add a secret store (.NET Secret Manager) to the project: dotnet user-secrets init
+
+- Save a password in the secret store: dotnet user-secrets set MongoDbConfiguration:Password password123
+
